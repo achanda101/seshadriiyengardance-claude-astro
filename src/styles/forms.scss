@@ -1,0 +1,46 @@
+.contact-form {
+  min-width: 20vw;
+  max-width: 28vw;
+  height: fit-content;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-color),
+    var(--accent-color-dark)
+  );
+  border-radius: 10px;
+  padding: 1em;
+}
+
+// Mobile + Tablet
+@media only screen and (max-width: 1250px) {
+  .contact-form {
+    max-width: 100vw;
+  }
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0 18px;
+  display: block;
+  border: 1px solid var(--accent-color-light);
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: var(--accent-color-verydark);
+  font-size: 16px;
+  color: #fff;
+}
+
+textarea {
+  resize: vertical;
+}
+
+label {
+  font-size: clamp(14px, 1.2vw, 20px);
+  font-family: var(--sans-serif-font-family);
+  font-weight: var(--medium-sansserif-font-weight);
+  color: var(--accent-color-text);
+}

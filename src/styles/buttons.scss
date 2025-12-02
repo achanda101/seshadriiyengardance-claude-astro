@@ -1,0 +1,99 @@
+.hero-video--buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-top: 30px;
+  a {
+    text-decoration: none;
+  }
+  .hero-video--button {
+    padding: 15px 20px;
+    margin-left: 20px;
+    // background-color: transparent;
+    // color: var(--hero-button-text-color);
+    text-transform: uppercase;
+    font-size: clamp(14px, 1.2vw, 20px);
+    font-family: var(--sans-serif-font-family);
+    font-weight: var(--medium-sansserif-font-weight);
+    border-radius: 8px;
+    // border: 2px solid var(--hero-button-border-color);
+    transition: all 1s;
+    &:hover {
+      // background-color: var(--hero-button-hover-color);
+      // color: #000;
+      cursor: pointer;
+    }
+  }
+  .hero-video--button.--gold {
+    background-color: var(--accent-color);
+    color: var(--accent-color-text);
+    border: none;
+    &:hover {
+      background-color: var(--accent-color-light);
+      color: var(--accent-color-text);
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .hero-video--buttons {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    > * + * {
+      margin-top: 18px;
+    }
+    .hero-video--button {
+      font-size: clamp(14px, 2.5vw, 26px);
+    }
+  }
+}
+
+.button {
+  padding: 10px 20px;
+  margin: 10px 0;
+  text-transform: uppercase;
+  font-size: clamp(14px, 1.2vw, 20px);
+  font-family: var(--sans-serif-font-family);
+  font-weight: var(--medium-sansserif-font-weight);
+  border-radius: 6px;
+  transition: all 1s;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+a .button {
+  text-decoration: none;
+}
+
+.button.--blue {
+  background-color: var(--background-color--light);
+  color: var(--light-grey);
+  border: 2px solid var(--slanteddiv-color3);
+  &:hover {
+    background-color: var(--background-pattern-color);
+    color: #fff;
+    // border: 2px solid var(--slanteddiv-color3--light);
+  }
+}
+
+.button.--pink {
+  background-color: var(--slanteddiv-color2);
+  color: var(--slanteddiv-color3--light);
+  border: 2px solid var(--slanteddiv-color3--light);
+  &:hover {
+    background-color: var(--slanteddiv-color2--light);
+    color: #fff;
+  }
+}
+
+.button.--gold {
+  background-color: var(--accent-color);
+  color: var(--accent-color-text);
+  border: none;
+  &:hover {
+    background-color: var(--accent-color-light);
+    color: var(--accent-color-text);
+  }
+}

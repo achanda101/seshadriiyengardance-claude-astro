@@ -1,0 +1,399 @@
+.is-flkty-hidden {
+  opacity: 0;
+}
+
+.flick-carousel {
+  width: 100%;
+  // background: linear-gradient(to bottom,
+  //     var(--accent-color),
+  //     var(--accent-color-dark));
+  padding-top: 40px;
+  border-radius: 10px;
+
+  .carousel-cell {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    // counter-increment: carousel-cell;
+
+
+    .slide-img {
+      width: 85%;
+      margin: 0 auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        &.contain {
+          object-fit: contain;
+        }
+      }
+    }
+
+    .slide-caption {
+      max-width: 100%;
+      height: max-content;
+      padding: 6px 10px;
+      padding-top: 20px;
+      background-color: transparent;
+      color: var(--accent-color-text);
+      font-family: var(--sans-serif-font-family);
+      font-weight: var(--medium-sansserif-font-weight);
+      font-size: clamp(14px, 1.5vw, 16px);
+      line-height: clamp(22px, 2vw, 24px);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      >*+* {
+        margin-top: 0;
+        padding-top: 0;
+      }
+
+      .text {
+        display: block;
+      }
+
+      .link {
+        font-size: clamp(12px, 1vw, 14px);
+      }
+    }
+  }
+
+  &.panorama {
+    // Image -- width : height = 1330 : 650
+    // carousel width = 100% of 55vw = 55vw
+    // carousel height = 55vw * (650/1300) = 55vw * 0.5 = 27.5vw
+    // adding caption box height
+    height: calc(27.5vw + 80px);
+    margin: 0 auto;
+
+    .carousel-cell {
+      .slide-img {
+        img {
+          height: 27.5vw;
+        }
+      }
+    }
+
+    &.no-caption {
+      height: calc(27.5vw + 45px);
+
+      .carousel-cell {
+        // placing the navigation dots below the carousel image
+        height: calc(27.5vw + 45px);
+      }
+    }
+
+    .carousel-cell {
+      height: calc(27.5vw + 80px);
+    }
+
+    /* position dots in carousel */
+    .flickity-page-dots {
+      bottom: 60px;
+    }
+  }
+
+  &.standard {
+    // Image -- width : height = 900 : 600
+    // carousel width = 100% of 55vw = 55vw
+    // carousel height = 55vw * (600/900) = 55vw * 0.667 = 36.69vw
+    // adding caption box height
+    height: calc(36.69vw + 80px);
+    margin: 0 auto;
+
+    .carousel-cell {
+      .slide-img {
+        img {
+          height: 36.69vw;
+        }
+      }
+    }
+
+    &.no-caption {
+      height: calc(36.69vw + 45px);
+
+      .carousel-cell {
+        height: calc(36.69vw + 45px);
+      }
+    }
+
+    &.caption-w-link {
+      height: calc(36.69vw + 100px);
+
+      .carousel-cell {
+        height: calc(36.69vw + 100px);
+      }
+
+      .flickity-page-dots {
+        bottom: 80px;
+      }
+
+      .link {
+        padding-bottom: 0;
+      }
+    }
+
+    .carousel-cell {
+      height: calc(36.69vw + 80px);
+    }
+
+    /* position dots in carousel */
+    .flickity-page-dots {
+      bottom: 60px;
+    }
+  }
+
+  .flickity-button {
+    opacity: 0;
+    background: rgba(0, 0, 0, 0.25);
+    border: 2px solid var(--threequarter-white);
+    transition: all 0.5s;
+
+    .flickity-button-icon {
+      fill: var(--threequarter-white);
+    }
+  }
+
+  .flickity-button:hover {
+    background: var(--accent-color);
+    border: 2px solid var(--accent-color-text);
+
+    .flickity-button-icon {
+      fill: var(--accent-color-text);
+    }
+  }
+
+  .flickity-page-dots {
+    display: none;
+  }
+
+  .flickity-prev-next-button {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  /* icon color */
+  .flickity-button-icon {
+    fill: var(--threequarter-white);
+    left: 28%;
+    top: 30%;
+    width: 40%;
+    height: 40%;
+  }
+
+  /* position dots in carousel */
+  .flickity-page-dots {
+    bottom: 80px;
+  }
+
+  &.no-caption {
+    .flickity-page-dots {
+      bottom: 15px;
+    }
+  }
+
+  /* threequarter-white circles */
+  .flickity-page-dots .dot {
+    width: 6px;
+    height: 6px;
+    opacity: 1;
+    background: transparent;
+    border: 1px solid var(--threequarter-white);
+    margin: 0 clamp(2px, 0.5vw, 5px);
+  }
+
+  /* fill-in selected dot */
+  .flickity-page-dots .dot.is-selected {
+    background: var(--threequarter-white);
+  }
+}
+
+// Mobile + Tablet
+@media only screen and (max-width: 800px) {
+  .flick-carousel {
+    width: 100%;
+    padding-top: 30px;
+    border-radius: 0;
+
+    &.panorama {
+      // carousel width = 100% of 100vw = 100vw
+      // carousel height = 100vw * (650/1300) = 50vw
+      height: max-content;
+
+      .carousel-cell {
+        height: max-content;
+
+        .slide-img {
+          width: 100%;
+          height: 50vw;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      &.no-caption {
+        height: calc(50vw + 35px);
+
+        .carousel-cell {
+          height: calc(50vw);
+
+          .slide-img {
+            width: 100%;
+            height: 50vw;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        .flickity-page-dots {
+          bottom: 20px;
+        }
+      }
+
+      &.caption-w-link {
+        height: calc(50vw + 130px);
+
+        .carousel-cell {
+          height: calc(50vw + 130px);
+
+          .slide-img {
+            width: 95%;
+            height: 50vw;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .slide-caption {
+            height: 130px;
+            padding-top: 30px;
+            padding-bottom: 0;
+          }
+        }
+
+        .flickity-page-dots {
+          bottom: 100px;
+        }
+
+        .link {
+          padding-bottom: 0;
+        }
+      }
+
+      .flickity-page-dots {
+        top: calc(50vw + 30px);
+      }
+    }
+
+    &.standard {
+      // carousel width = 100% of 100vw = 100vw
+      // carousel height = 100vw * (600/900) = 100vw * 0.667 = 66.7vw
+      // height: calc(66.7vw + 50px);
+      height: max-content;
+
+      .carousel-cell {
+        // height: calc(66.7vw + 50px);
+        height: max-content;
+
+        .slide-img {
+          width: 95%;
+          height: 66.7vw;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      &.no-caption {
+        padding-bottom: 30px;
+        // height: calc(66.7vw + 35px);
+        height: max-content;
+
+        .carousel-cell {
+          // height: 66.7vw;
+          height: max-content;
+
+          .slide-img {
+            width: 95%;
+            height: 66.7vw;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
+
+        // .flickity-page-dots {
+        //   bottom: 20px;
+        // }
+      }
+
+      &.caption-w-link {
+        // height: calc(66.7vw + 130px);
+        height: max-content;
+
+        .carousel-cell {
+          // height: calc(66.7vw + 130px);
+          height: max-content;
+
+          .slide-img {
+            width: 95%;
+            height: 66.7vw;
+
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          // .slide-caption {
+          //   height: 130px;
+          //   padding-top: 20px;
+          //   padding-bottom: 0;
+          // }
+        }
+
+        // .flickity-page-dots {
+        //   bottom: 100px;
+        // }
+        .link {
+          padding-bottom: 0;
+        }
+      }
+
+      .flickity-page-dots {
+        top: calc(66.7vw + 30px);
+      }
+    }
+
+    .flickity-prev-next-button {
+      display: none;
+    }
+
+    .flickity-page-dots .dot {
+      width: 4px;
+      height: 4px;
+    }
+  }
+}

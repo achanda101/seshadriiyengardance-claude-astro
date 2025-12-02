@@ -1,0 +1,172 @@
+---
+import PageHeroFixedLayout from '../layouts/PageHeroFixedLayout.astro';
+
+const frontmatter = {
+  title: "Training | Seshadri Iyengar",
+  heroType: "image",
+  heroText: "Training at ICFA",
+  heroDeskWebp: "url('https://res.cloudinary.com/driyengar/image/upload/v1629173512/BANNER-IMAGE-TRAINING_desk_alwma3.webp')",
+  heroTabWebp: "url('https://res.cloudinary.com/driyengar/image/upload/v1629173512/BANNER-IMAGE-TRAINING_ipad_dnrxkw.webp')",
+  heroMobWebp: "url('https://res.cloudinary.com/driyengar/image/upload/v1629173511/BANNER-IMAGE-TRAINING_mob_xtc5rx.webp')",
+  heroDesk: "url('https://res.cloudinary.com/driyengar/image/upload/v1631218410/BANNER-IMAGE-TRAINING_desk_sxoodk.png')",
+  heroTab: "url('https://res.cloudinary.com/driyengar/image/upload/v1631218410/BANNER-IMAGE-TRAINING_ipad_ygfxap.png')",
+  heroMob: "url('https://res.cloudinary.com/driyengar/image/upload/v1631218411/BANNER-IMAGE-TRAINING_mob_l9zypy.png')",
+  heroTagline: "BHARATNATYAM, YOGA & BODY KINETICS",
+  carousels: true,
+  modals: false
+};
+---
+
+<PageHeroFixedLayout title={frontmatter.title} heroType={frontmatter.heroType} heroText={frontmatter.heroText} heroDesk={frontmatter.heroDesk} heroTab={frontmatter.heroTab} heroMob={frontmatter.heroMob} heroDeskWebp={frontmatter.heroDeskWebp} heroTabWebp={frontmatter.heroTabWebp} heroMobWebp={frontmatter.heroMobWebp} heroTagline={frontmatter.heroTagline} carousels={frontmatter.carousels} modals={frontmatter.modals}>
+  <div class="content slanted-div default-bg right-facing">
+    <div class="multi-row-section container">
+      <p class="full-width">
+        On-going classes are held in <b>Bharatnatyam, Yoga, Body Kinetics</b> at ICFA.
+      </p>
+      <p class="full-width no-top-padding">
+        <ul>
+          <li>
+            <p class="full-width">
+              <b>Classical Dance Training</b>
+              <br>
+              ICFA imparts intensive dance training in <b>Bharatnatyam</b>. Batches are held for the Beginner and the Advanced levels on <b>Tuesdays and Thursdays - 5.00pm onwards.</b>
+            </p>
+            <p class="full-width">
+              <b>Holistic Approach</b>
+              <br>
+              Introduction to the technique and grammar in dance, Yoga asana - awareness towards the body, breathing. Discussions on various aspects related to stage craft such as, costume, lighting, marketing, storytelling, etc. are taught to the students as part of the curriculum. He believes Nutrition and Lifestyle play a huge role and guides in customising them for individuals.
+            </p>
+          </li>
+          <li>
+            <p class="full-width">
+              <b>Yoga training</b>
+              <br>
+              Classes for adults and children. In conjunction with the <b>yoga asana</b>, emphasis is given to understanding ones physical body, and the practice of <b> Pranayama and Meditation</b>.
+            </p>
+          </li>
+          <li>
+            <p class="full-width">
+              <b>Private classes</b>
+              <br>
+              One on one lessons are offered for those interested.
+            </p>
+          </li>
+        </ul>
+      </p>
+
+      <h1 class="full-width-headline">
+        Body Kinetics
+      </h1>
+
+      <p class="full-width">
+        A Brain child of Dr.Iyengar is a fitness module designed keeping in mind the requirements of a dancer for seamless and able execution.  A module carefully designed, imparts an in-depth understanding of the physical body, the mind and the breath. The training is intensive and can be learnt through a workshop or as part of the regular curriculum. In addition he believes Nutrition and Lifestyle play a huge role and guides in customising them for individuals.
+      </p>
+
+      <p class="full-width">
+        He is very confident of its benefits and wants to popularise it amongst serious dance practitioners.  He encourages them to learn, practice and reap the benefit that nurtures the body, mind, breathe and self. <b>The aim is to bring about a connection between the technique (the dance form) and the medium (the dancer).</b>
+      </p>
+      <p class="full-width">
+        Queries? Write to <a href="mailto:icfabengaluru@gmail.com" class="link underline">icfabengaluru@gmail.com</a>
+      </p>
+      </div>
+      <div class="multi-row-section container-flkty pad-top">
+        <h2 class="full-width-headline center">
+          ICFA Students
+        </h2>
+        <div class="flick-carousel standard no-caption is-flkty-hidden">
+          <div class="carousel-cell">
+            <div class="slide-img">
+              <picture>
+                <source
+                  srcset="
+                  https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_31_krncdq.webp
+                  "
+                  type="image/webp"
+                />
+                <source
+                  srcset="
+                  https://res.cloudinary.com/driyengar/image/upload/v1631222798/ICFA_STUDENTS_31_ws04bc.jpg
+                  "
+                  type="image/jpeg"
+                />
+                <img
+                  src="https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_31_krncdq.webp"
+                  alt="ICFA Students"
+                  class="contain"
+                />
+              </picture>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <div class="slide-img">
+              <picture>
+                <source
+                  srcset="
+                  https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_2_uy5u5g.webp
+                  "
+                  type="image/webp"
+                />
+                <source
+                  srcset="
+                  https://res.cloudinary.com/driyengar/image/upload/v1631222798/ICFA_STUDENTS_2_duhgt4.jpg
+                  "
+                  type="image/jpeg"
+                />
+                <img
+                  src="https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_2_uy5u5g.webp"
+                  alt="ICFA Students"
+                  class="contain"
+                />
+              </picture>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <div class="slide-img">
+              <picture>
+                <source
+                  srcset="
+                  https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_4_dx0pkf.webp
+                  "
+                  type="image/webp"
+                />
+                <source
+                  srcset="
+                  https://res.cloudinary.com/driyengar/image/upload/v1631222798/STUDENTS_4_qewxbg.jpg
+                  "
+                  type="image/jpeg"
+                />
+                <img
+                  src="https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_4_dx0pkf.webp"
+                  alt="ICFA Students"
+                  class="contain"
+                />
+              </picture>
+            </div>
+          </div>
+          <div class="carousel-cell">
+            <div class="slide-img">
+              <picture>
+                <source
+                  srcset="
+                  https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_2_kbu9at.webp
+                  "
+                  type="image/webp"
+                />
+                <source
+                  srcset="
+                  https://res.cloudinary.com/driyengar/image/upload/v1631222799/STUDENTS_2_uygq5v.jpg
+                  "
+                  type="image/jpeg"
+                />
+                <img
+                  src="https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_2_kbu9at.webp"
+                  alt="ICFA Students"
+                  class="contain"
+                />
+              </picture>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</PageHeroFixedLayout>

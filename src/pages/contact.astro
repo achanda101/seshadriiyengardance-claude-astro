@@ -1,0 +1,123 @@
+---
+import PageHeroFixedLayout from '../layouts/PageHeroFixedLayout.astro';
+---
+
+<PageHeroFixedLayout
+  title="Contact | Seshadri Iyengar"
+  heroType="image"
+  heroText="Contact"
+  heroDeskWebp="url('https://res.cloudinary.com/driyengar/image/upload/v1630345823/Contact-banner-desk2_vddqta.webp')"
+  heroTabWebp="url('https://res.cloudinary.com/driyengar/image/upload/v1629455546/Contact-banner-ipad_bas2zj.webp')"
+  heroMobWebp="url('https://res.cloudinary.com/driyengar/image/upload/v1629455546/Contact-banner-mob_ytx395.webp')"
+  heroDesk="url('https://res.cloudinary.com/driyengar/image/upload/v1631217394/Contact-banner-desk2_jp6v5v.png')"
+  heroTab="url('https://res.cloudinary.com/driyengar/image/upload/v1631217394/Contact-banner-ipad_wvvhoy.png')"
+  heroMob="url('https://res.cloudinary.com/driyengar/image/upload/v1631217394/Contact-banner-mob_yrwc15.png')"
+  carousels={false}
+  modals={false}
+>
+  <div class="content slanted-div default-bg right-facing">
+    <div class="multi-row-section container">
+      <div class="multi-column-section wrap-on-small">
+        <div class="contact-form">
+          <form
+            id="contact"
+            name="contact"
+            method="POST"
+            data-netlify-recaptcha="true"
+            data-netlify="true"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <label for="name">
+              <strong>Name</strong>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              size="30"
+              required
+            />
+            <label for="email">
+              <strong>Email</strong>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              size="30"
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            />
+            <label for="phone">
+              <strong>Contact Number</strong>
+            </label>
+            <input type="text" id="phone" name="phone" size="30" />
+            <label for="subject">
+              <strong>Subject</strong>
+            </label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              size="30"
+              required
+            />
+            <label for="message">
+              <strong>Message</strong>
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              cols="36"
+              required
+            ></textarea>
+            <div data-netlify-recaptcha="true"></div>
+            <button
+              type="submit"
+              form="contact"
+              value="Send"
+              class="button --gold"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+        <div class="multi-row-section pack-tight">
+          <p class="full-width">
+            <a href="mailto:icfabengaluru@gmail.com" class="link underline"
+              ><i class="far fa-envelope"></i> icfabengaluru@gmail.com</a
+            >
+          </p>
+          <p class="full-width">
+            <a
+              href="https://www.facebook.com/Iyengar-Centre-for-FINE-ARTS-293774594468547"
+              target="_blank"
+              class="link underline"
+              ><i class="fab fa-facebook-square"></i> Like ICFA Bengaluru on
+              Facebook</a
+            >
+          </p>
+          <p class="full-width">
+            <a
+              href="https://www.instagram.com/icfabengaluru/"
+              target="_blank"
+              class="link underline"
+              ><i class="fab fa-instagram"></i> Follow ICFA Bengaluru on
+              Instagram</a
+            >
+          </p>
+          <p class="full-width">
+            <a
+              href="https://www.youtube.com/channel/UCS54iy-nprfzdtoy_xOaHCw"
+              target="_blank"
+              class="link underline"
+              ><i class="fab fa-youtube"></i> Subscribe to ICFA Bengaluru on
+              Youtube</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</PageHeroFixedLayout>

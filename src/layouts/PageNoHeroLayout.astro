@@ -1,0 +1,63 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+export interface Props {
+  title: string;
+  carousels?: boolean;
+  modals?: boolean;
+}
+
+const { title, carousels = false, modals = false } = Astro.props;
+---
+
+<BaseLayout title={title} homePage={false} noHero={true} carousels={carousels}>
+  <span id="innerPage" style="visibility: hidden"></span>
+  <span id="noHero" style="visibility: hidden"></span>
+
+  <main>
+    <slot />
+  </main>
+
+  {carousels && (
+    <>
+      <script is:inline src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+      <script is:inline>
+        var flktyElemList = document.querySelectorAll(".flick-carousel");
+        if (flktyElemList) {
+          flktyElemList.forEach((flktyElem) => {
+            var stdFlktyObj = new Flickity(flktyElem);
+            flktyElem.style.opacity = 1.0;
+          });
+        }
+      </script>
+    </>
+  )}
+
+  {modals && (
+    <script is:inline>
+      document.querySelectorAll(".open-modal").forEach((modalLink) => {
+        modalLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          const modalToggle = e.target.closest(".open-modal");
+          if (!modalToggle) return;
+
+          const modal = modalToggle.parentNode.nextElementSibling;
+
+          if (modal.classList.contains("modal--container")) {
+            modal.classList.add("is-open");
+            modal.style.animation = "modalFadeIn 500ms forwards";
+            document.body.style.overflowY = "hidden";
+
+            const closeButton = modal.querySelector(".modal--close");
+            if (closeButton) {
+              closeButton.addEventListener("click", (_) => {
+                modal.classList.remove("is-open");
+                document.body.style.overflowY = "scroll";
+              });
+            }
+          }
+        });
+      });
+    </script>
+  )}
+</BaseLayout>

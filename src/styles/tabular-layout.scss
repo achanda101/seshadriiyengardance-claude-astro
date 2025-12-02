@@ -1,0 +1,88 @@
+table {
+  background-color: var(--accent-color);
+  color: var(--accent-color-text);
+  border-collapse: collapse;
+  padding: 2vw;
+  table-layout: fixed;
+
+  .link:hover {
+    color: var(--accent-color-dark);
+    border-color: var(--accent-color-dark);
+  }
+  .fancy-link:hover {
+    color: var(--accent-color-dark);
+    border-color: var(--accent-color-dark);
+  }
+  .fancy-link:hover::before {
+    color: var(--accent-color-dark);
+    border-color: var(--accent-color-dark);
+  }
+  thead {
+    background-color: var(--accent-color-dark);
+    border: 1px solid var(--accent-color-dark);
+    tr {
+      th {
+        padding: 1vw;
+        position: sticky;
+      }
+    }
+  }
+  tbody {
+    tr {
+      border: 1px solid var(--accent-color-dark);
+      overflow: hidden;
+      &:nth-child(2n + 1) {
+        background-color: var(--accent-color-light);
+      }
+      &.old_events {
+        display: none;
+      }
+      td {
+        padding: 0.75em;
+        border: 1px solid var(--accent-color-dark);
+        em {
+          color: var(--accent-color-vvdark);
+          font-family: var(--sans-serif-font-family);
+          font-weight: var(--strong-sansserif-font-weight);
+          display: block;
+          padding: 0.5em 0 0;
+        }
+        .td-title {
+          display: block;
+          color: var(--accent-color-vvdark);
+          font-family: var(--sans-serif-font-family);
+          font-weight: var(--strong-sansserif-font-weight);
+          font-size: 1.4em;
+        }
+        .poster-thumb {
+          width: 120px;
+          height: 120px;
+          border-radius: 8px;
+          overflow: hidden;
+          margin-top: 1em;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+          &.drop-shadow {
+            -webkit-box-shadow: 0 1px 1px rgba(47, 40, 29, 0.3),
+              0 2px 2px rgba(47, 40, 29, 0.25), 0 4px 4px rgba(47, 40, 29, 0.25);
+            box-shadow: 0 1px 1px rgba(47, 40, 29, 0.3),
+              0 2px 2px rgba(47, 40, 29, 0.25), 0 4px 4px rgba(47, 40, 29, 0.25);
+            transition: all 0.4s ease-in-out;
+
+            &:hover {
+              -webkit-box-shadow: 0 1px 8px rgba(47, 40, 29, 0.15),
+                0 2px 10px rgba(47, 40, 29, 0.1),
+                0 4px 14px rgba(47, 40, 29, 0.1);
+              box-shadow: 0 1px 8px rgba(47, 40, 29, 0.15),
+                0 2px 10px rgba(47, 40, 29, 0.1),
+                0 4px 14px rgba(47, 40, 29, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+export interface Props {
+  title: string;
+  heroVideo: string;
+  heroVideoMP4: string;
+}
+
+const { title, heroVideo, heroVideoMP4 } = Astro.props;
+---
+
+<BaseLayout title={title} homePage={true}>
+  <div class="hero-video">
+    <div class="hero-video--content">
+      <div class="hero-video--text homepage">Dr. Seshadri Iyengar</div>
+      <div class="hero-video--tagline">Dance is beyond "form" and "gender"</div>
+      <div class="hero-video--buttons">
+        <a href="/icfa">
+          <div class="hero-video--button --gold">
+            Iyengar Centre for Fine Arts
+          </div>
+        </a>
+        <a href="/upcoming-events">
+          <div class="hero-video--button --gold">Upcoming Events</div>
+        </a>
+      </div>
+    </div>
+    <div class="hero-misc--content">
+      <div class="hero-misc--top">
+        <img
+          src="https://res.cloudinary.com/driyengar/image/upload/v1628017308/1-Nataraja_jexplx.png"
+          alt="Statue of Nataraja"
+        />
+      </div>
+      <div class="hero-misc--bottom">
+        <div class="scroll-indicator">
+          <img
+            src="/scroll-indicator.png"
+            alt="scroll direction indicator"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="volume-icon">
+      <i class="fas fa-volume-mute"></i>
+    </div>
+    <video muted loop autoplay id="heroVideo">
+      <source id="webm_src" src={heroVideo} type="video/webm" />
+      <source id="mp4_src" src={heroVideoMP4} type="video/mp4" />
+    </video>
+  </div>
+
+  <script is:inline>
+    var navBarDeskElem = document.getElementsByClassName("navbar")[1];
+    var heroVideo = document.getElementById("heroVideo");
+    var heroVideoContent = document.getElementsByClassName("hero-video--content")[0];
+    var heroVideoText = document.getElementsByClassName("hero-video--text")[0];
+    var heroVideoTagline = document.getElementsByClassName("hero-video--tagline")[0];
+    var heroVideoButtonList = document.getElementsByClassName("hero-video--buttons")[0];
+    var heroMiscContent = document.getElementsByClassName("hero-misc--content")[0];
+    var w = window.innerWidth;
+
+    if (w < 800) {
+      document.getElementById("mp4_src").src = "https://res.cloudinary.com/driyengar/video/upload/v1630987787/homepage-banner-mobile_dwzllk.mp4";
+      document.getElementById("webm_src").src = "https://res.cloudinary.com/driyengar/video/upload/v1630987787/homepage-banner-mobile_izef9x.webm";
+      heroVideo.load();
+    }
+
+    window.addEventListener("load", function () {
+      if (heroVideoText) {
+        let tl = gsap.timeline();
+        tl.from(heroVideoContent, { autoAlpha: 0 });
+        tl.fromTo(heroVideoText, { alpha: 0 }, { duration: 2, alpha: 1 }, 0);
+        if (heroVideoTagline) {
+          tl.fromTo(heroVideoTagline, { y: -30, alpha: 0 }, { duration: 2, y: 0, alpha: 1 }, ">");
+        }
+        if (heroVideoButtonList) {
+          tl.fromTo(heroVideoButtonList, { alpha: 0 }, { duration: 1, alpha: 1 });
+        }
+
+        if (navBarDeskElem) {
+          tl.from(navBarDeskElem, { duration: 1, autoAlpha: 0 });
+        }
+        if (heroMiscContent) {
+          tl.from(heroMiscContent, { duration: 2, autoAlpha: 0 }, ">");
+        }
+      }
+    }, false);
+  </script>
+
+  <main>
+    <slot />
+  </main>
+</BaseLayout>

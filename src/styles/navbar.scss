@@ -1,0 +1,312 @@
+.desk {
+  display: none;
+}
+
+.mobile {
+  display: block;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  // left: 0;
+  width: 100%;
+  transition: height 0.5s;
+  z-index: var(--navbar-z-index);
+}
+
+.navbar .logo {
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  height: 80px;
+  width: auto;
+  transition: height 0.5s;
+}
+
+nav .mobile ul {
+  list-style: none;
+}
+
+nav .mobile a {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
+}
+
+.mobile .navbar {
+  height: var(--navbar-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+  background-color: var(--navbar-bg-color);
+  &.inner-page {
+    background: linear-gradient(
+      to bottom,
+      rgb(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.01)
+    );
+  }
+  transition: all 0.5s;
+  > a {
+    font-size: 24px;
+    font-family: var(--sans-serif-font-family);
+    color: var(--accent-color);
+    text-decoration: none;
+    text-align: center;
+    transition: color 0.75s;
+  }
+  > a:hover {
+    color: var(--accent-color);
+  }
+}
+
+.mobile .navbar.trans {
+  background-color: transparent;
+}
+
+.mobile .mobile-menu-open {
+  min-height: 100vh;
+  background-color: var(--accent-color);
+}
+.mobile .multi-level {
+  background-color: #000;
+}
+
+// Functionality
+nav input[type="checkbox"],
+.mobile .mobile-menu-open,
+.mobile .multi-level,
+.mobile .item ul,
+.mobile .button-bars {
+  display: none;
+}
+
+.mobile .sub-item ul {
+  // This is only for the NG menu style
+  display: block;
+  //   display: none;
+}
+
+.mobile #menu:checked ~ .mobile-menu-open,
+.mobile #menu:checked ~ .mobile-menu-open .multi-level,
+.mobile .item input:checked ~ ul {
+  display: block;
+}
+
+.mobile #menu:checked ~ .mobile-menu-open .button-bars {
+  display: flex;
+}
+
+// Styling Mobile Menu
+.mobile {
+  // min-height: 100%;
+  a {
+    color: var(--ham-menu-subitem-color);
+  }
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile ul,
+.mobile li,
+.mobile .item label {
+  line-height: 50px;
+  margin: 0;
+  padding: 0;
+  padding-left: 1.2em;
+  font-weight: 300;
+}
+
+.mobile .item > label {
+  background-color: var(--ham-menu-bg-color);
+}
+
+.mobile .sub-item label {
+  padding-left: 0;
+}
+
+.mobile > label {
+  padding: 0;
+}
+
+.mobile ul {
+  background-color: var(--accent-color);
+}
+
+.mobile .multi-level {
+  overflow-y: scroll;
+}
+
+// .mobile .multi-level .item > label {
+//   border-bottom: 1px solid var(--accent-color-text-semilight);
+// }
+
+.mobile .multi-level .item > .label-plus {
+  border-bottom: 1px solid var(--accent-color-text-semilight);
+}
+
+// #ml1 .item:first-child .label-plus {
+//   border-top: 1px solid var(--accent-color-text-semilight);
+// }
+
+.mobile .item > label {
+  //   this makes the label element lie above the chevron
+  //   so you can click anywhere on the label
+  z-index: calc(var(--navbar-z-index) + 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile .multi-level .item > label i {
+  padding-right: 2.5em;
+  font-size: 0.7em;
+  color: var(--ham-menu-chevron-color);
+  transform: rotate(0deg);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+.mobile .multi-level .item > .label-plus {
+  line-height: 50px;
+  z-index: calc(var(--navbar-z-index) + 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    text-decoration: none;
+    text-transform: capitalize;
+    flex-grow: 2;
+    // padding-left: 1.2em;
+    text-align: center;
+    color: var(--accent-color);
+    font-family: var(--sans-serif-font-family);
+    font-weight: var(--medium-sansserif-font-weight);
+    font-size: 18px;
+  }
+}
+
+.mobile .multi-level .item > .label-plus label {
+  display: inline-block;
+}
+
+.mobile .multi-level .item > .label-plus label i {
+  padding-right: 2.5em;
+  font-size: 0.7em;
+  color: var(--accent-color);
+  transform: rotate(0deg);
+  transform-origin: left;
+  transition: transform 0.5s;
+}
+
+#ham-icon-wrapper {
+  padding: 1em 0.5em;
+}
+
+// Animating the hamburger menu icon
+#ham-icon {
+  display: block;
+  position: relative;
+}
+
+#ham-icon,
+#ham-icon::before,
+#ham-icon::after {
+  width: 1.7em;
+  height: 3px;
+  background: var(--accent-color);
+  transition: transform 350ms ease-in-out, opacity 200ms linear;
+}
+
+#ham-icon::before,
+#ham-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+#ham-icon::before {
+  bottom: 8px;
+}
+#ham-icon::after {
+  top: 8px;
+}
+
+.ham-open#ham-icon {
+  transform: rotate(45deg);
+}
+
+.ham-open#ham-icon::before {
+  opacity: 0;
+}
+
+.ham-open#ham-icon::after {
+  transform: rotate(90deg) translate(-8px);
+}
+
+.mobile label:hover {
+  cursor: pointer;
+}
+
+.mobile .multi-level .item input:checked + label i {
+  transform: rotate(90deg);
+}
+
+.mobile .multi-level .item > input:checked + .label-plus label i {
+  transform: rotate(90deg);
+}
+
+.mobile .button-bars {
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  // align-items: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color: var(--accent-color);
+  flex-grow: 2;
+}
+
+.mobile .button-bar {
+  // padding: 1em 1.5em 0.5em 1.2em;
+  padding: 0.5em 1.2em 3em;
+
+  .button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    color: var(--accent-color-text-dark);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    &.icon-img {
+      height: 28px;
+      width: 36px;
+      overflow: hidden;
+      img {
+        width: auto;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &.round {
+      padding: 6px 11px;
+      text-align: center;
+      border-radius: 25px;
+      font-size: 18px;
+    }
+    a {
+      color: var(--accent-color-text-dark);
+      font-size: 16px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}

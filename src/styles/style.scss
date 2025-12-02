@@ -1,0 +1,59 @@
+@import "variables";
+
+html,
+body {
+  min-height: fit-content;
+  margin: 0;
+  padding: 0;
+  font-family: var(--serif-font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  background-color: #000;
+  // mobile + tablet font-size
+  font-size: 16px;
+  position: relative;
+  // overflow: hidden;
+}
+
+//  Enable smooth scrolling on the whole document
+// TODO: does not work on safari iOS
+// html {
+//   scroll-behavior: smooth;
+// }
+
+// protect image download by blocking mouse events
+img {
+  pointer-events: none;
+}
+
+:focus {
+  outline: none;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+// Desktop + Tablet
+@media only screen and (min-width: 800px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@import "navbar";
+@import "navbar-desk";
+@import "vanillaSlideshow";
+// @import "hero";
+@import "hero-fixed";
+@import "buttons";
+@import "layouts";
+@import "content";
+@import "slanted-divs";
+@import "footer";
+@import "home";
+@import "sm-wrappers";
+// @import "owl-carousel-custom";
+@import "flickity-carousels";
+@import "modals";
+@import "forms";
+@import "buttons";
+@import "tabular-layout";

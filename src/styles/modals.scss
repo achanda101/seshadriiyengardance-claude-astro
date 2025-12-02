@@ -1,0 +1,89 @@
+.modal--container {
+  position: fixed;
+  top: calc(var(--navbar-desk-height) + 20px);
+  left: 15vw;
+  width: 70%;
+  z-index: 10;
+  background-color: var(--background-color--light);
+  border-radius: 5px 20px 5px;
+  display: none;
+  &.is-open {
+    display: block;
+  }
+}
+
+// Mobile + Tablet
+@media only screen and (max-width: 800px) {
+  .modal--container {
+    width: 90%;
+    top: calc(var(--navbar-height) + 20px);
+    left: 5vw;
+  }
+}
+
+.modal--close {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  background: #fff;
+  color: var(--very-dark-grey);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+h2.modal--title-box {
+  max-width: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-color),
+    var(--accent-color-dark)
+  );
+  color: var(--accent-color-text);
+  padding: 15px 10px;
+  padding-left: 50px;
+  margin: 0;
+  border-radius: 5px 20px 0 0;
+  overflow: hidden;
+}
+
+.modal--content {
+  padding: 10px;
+  border: 2px solid var(--accent-color-dark);
+  border-top: none;
+  max-height: 60vh;
+  overflow-y: auto;
+  h3 {
+    margin: 0;
+    max-width: 100%;
+    color: var(--accent-color-text);
+  }
+  p {
+    max-width: 100%;
+    color: var(--accent-color-text);
+  }
+  ul {
+    background-color: var(--background-color--light);
+  }
+}
+
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes modalFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
