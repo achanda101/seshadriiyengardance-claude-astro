@@ -1,6 +1,88 @@
 ---
 import PageHeroFixedLayout from '../layouts/PageHeroFixedLayout.astro';
 import YouTube from '../components/YouTube.astro';
+import EmblaCarousel from '../components/EmblaCarousel.astro';
+
+const workshopImages = [
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630422923/workshop_San_Antonio_cpwgxl.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226303/workshop_San_Antonio_ri0zei.jpg",
+    alt: "Workshop at San Antonio USA",
+    caption: "Workshop at San Antonio USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630422922/workshop_TRIAD_area_pouyqv.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226303/workshop_TRIAD_area_mtqygn.jpg",
+    alt: "Workshop in the Triad Area USA",
+    caption: "Workshop in the Triad Area USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630422921/BODY_KINETIC_WORKSHOP_a2abjn.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226303/BODY_KINETIC_WORKSHOP_yc7usw.jpg",
+    alt: "Body Kinetic Workshop",
+    caption: "Body Kinetic Workshop"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630422921/ATLANTA_PERFORMACNE_AND_WORKSHOP_xbtfml.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226303/ATLANTA_PERFORMACNE_AND_WORKSHOP_rk3oq6.jpg",
+    alt: "Performance & Workshop in Atlanta USA",
+    caption: "Performance & Workshop in Atlanta USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630422921/Performance_and_worksop_PHOENIX_p2brb3.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226303/Performance_and_worksop_PHOENIX_kbf3tv.jpg",
+    alt: "Performance & Workshop in Phoenix USA",
+    caption: "Performance & Workshop in Phoenix USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630422921/WORKSHOP_UK_dxs2au.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226303/WORKSHOP_UK_xcuypk.jpg",
+    alt: "Performance & Workshop in the UK",
+    caption: "Workshop in the UK"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630422921/workshop_Nashville_xilspo.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226303/workshop_Nashville_ldiqsz.jpg",
+    alt: "Workshop in Nashville USA",
+    caption: "Workshop in Nashville USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629267276/WORKSHOP_N.CAROLINA_wwnjmy.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226241/WORKSHOP_N.CAROLINA_dhdxio.jpg",
+    alt: "Workshop at North Carolina USA",
+    caption: "Workshop at North Carolina USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629267277/WORKSHOP_AND_PERFORMANCE_NORTH_CAROLINA_zcrjhv.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226241/WORKSHOP_AND_PERFORMANCE_NORTH_CAROLINA_sayomq.jpg",
+    alt: "Workshop and Performance at North Carolina USA",
+    caption: "Workshop and Performance at North Carolina USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629267276/seattle_workshop_ytjshi.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226241/seattle_workshop_sds729.jpg",
+    alt: "Workshop at Seattle USA",
+    caption: "Workshop at Seattle USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629267276/phoenix_workshop_ykyj49.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226240/phoenix_workshop_apevmu.jpg",
+    alt: "Workshop at Phoenix USA",
+    caption: "Workshop at Phoenix USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629267276/USA_4_uhjuxb.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226241/USA_4_d8z2tk.jpg",
+    alt: "Workshop in the USA",
+    caption: "Performance in the USA"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629267276/sujatha_workshop_pqisqh.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631226241/sujatha_workshop_dksrgx.jpg",
+    alt: "Online Workshop",
+    caption: "Online Workshop"
+  }
+];
 
 const frontmatter = {
   title: "Workshops | Seshadri Iyengar",
@@ -71,268 +153,7 @@ const frontmatter = {
       </p>
     </div>
     <div class="multi-row-section container-flkty pad-top">
-      <div class="flick-carousel standard is-flkty-hidden">
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1630422923/workshop_San_Antonio_cpwgxl.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226303/workshop_San_Antonio_ri0zei.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1630422923/workshop_San_Antonio_cpwgxl.webp"
-                   alt="Workshop at San Antonio USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Workshop at San Antonio USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1630422922/workshop_TRIAD_area_pouyqv.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226303/workshop_TRIAD_area_mtqygn.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1630422922/workshop_TRIAD_area_pouyqv.webp"
-                   alt="Workshop in the Triad Area USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Workshop in the Triad Area USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1630422921/BODY_KINETIC_WORKSHOP_a2abjn.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226303/BODY_KINETIC_WORKSHOP_yc7usw.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1630422921/BODY_KINETIC_WORKSHOP_a2abjn.webp"
-                   alt="Body Kinetic Workshop"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Body Kinetic Workshop
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1630422921/ATLANTA_PERFORMACNE_AND_WORKSHOP_xbtfml.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226303/ATLANTA_PERFORMACNE_AND_WORKSHOP_rk3oq6.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1630422921/ATLANTA_PERFORMACNE_AND_WORKSHOP_xbtfml.webp"
-                   alt="Performance & Workshop in Atlanta USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Performance & Workshop in Atlanta USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1630422921/Performance_and_worksop_PHOENIX_p2brb3.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226303/Performance_and_worksop_PHOENIX_kbf3tv.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1630422921/Performance_and_worksop_PHOENIX_p2brb3.webp"
-                   alt="Performance & Workshop in Phoenix USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Performance & Workshop in Phoenix USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1630422921/WORKSHOP_UK_dxs2au.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226303/WORKSHOP_UK_xcuypk.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1630422921/WORKSHOP_UK_dxs2au.webp"
-                   alt="Performance & Workshop in the UK"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Workshop in the UK
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1630422921/workshop_Nashville_xilspo.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226303/workshop_Nashville_ldiqsz.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1630422921/workshop_Nashville_xilspo.webp"
-                   alt="Workshop in Nashville USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Workshop in Nashville USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629267276/WORKSHOP_N.CAROLINA_wwnjmy.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226241/WORKSHOP_N.CAROLINA_dhdxio.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629267276/WORKSHOP_N.CAROLINA_wwnjmy.webp"
-                   alt="Workshop at North Carolina USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Workshop at North Carolina USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629267277/WORKSHOP_AND_PERFORMANCE_NORTH_CAROLINA_zcrjhv.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226241/WORKSHOP_AND_PERFORMANCE_NORTH_CAROLINA_sayomq.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629267277/WORKSHOP_AND_PERFORMANCE_NORTH_CAROLINA_zcrjhv.webp"
-                   alt="Workshop and Performance at North Carolina USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Workshop and Performance at North Carolina USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629267276/seattle_workshop_ytjshi.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226241/seattle_workshop_sds729.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629267276/seattle_workshop_ytjshi.webp"
-                   alt="Workshop at Seattle USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Workshop at Seattle USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629267276/phoenix_workshop_ykyj49.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226240/phoenix_workshop_apevmu.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629267276/phoenix_workshop_ykyj49.webp"
-                   alt="Workshop at Phoenix USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Workshop at Phoenix USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629267276/USA_4_uhjuxb.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226241/USA_4_d8z2tk.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629267276/USA_4_uhjuxb.webp"
-                   alt="Workshop in the USA"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Performance in the USA
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629267276/sujatha_workshop_pqisqh.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631226241/sujatha_workshop_dksrgx.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629267276/sujatha_workshop_pqisqh.webp"
-                   alt="Online Workshop"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Online Workshop
-          </div>
-        </div>
-      </div>
+      <EmblaCarousel images={workshopImages} type="standard" />
     </div>
 
 

@@ -1,6 +1,171 @@
 ---
 import PageHeroFixedLayout from '../layouts/PageHeroFixedLayout.astro';
 import YouTube from '../components/YouTube.astro';
+import EmblaCarousel from '../components/EmblaCarousel.astro';
+
+const productionImages = [
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180948/1_STAGE_REHEARSAL_gbs2s2.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631219724/1_STAGE_REHEARSAL_jv1upm.jpg",
+    alt: "Rehearsal for Sri Ramanujacharya Production",
+    caption: "Stage Rehearsal"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180947/STUDENTS_1_lvxqxl.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631219723/STUDENTS_1_ebtr2x.jpg",
+    alt: "Students at Rehearsal",
+    caption: "Students at Rehearsal"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180948/STUDENTS_2_lty9ox.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631219723/STUDENTS_2_jnc9wb.jpg",
+    alt: "Students at Rehearsal",
+    caption: "Students at Rehearsal"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180947/STUDENTS_3_xfyko1.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631219724/STUDENTS_3_w7gs6h.jpg",
+    alt: "Students at Rehearsal",
+    caption: "Students at Rehearsal"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180947/STUDENTS_4_pmpn6l.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631219723/STUDENTS_4_f42tcd.jpg",
+    alt: "Students at Rehearsal",
+    caption: "Students at Rehearsal"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180969/opening_pic_on_the_scroll._iwn4ew.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221145/opening_pic_on_the_scroll._ktpecx.jpg",
+    alt: "Invitation Card for Sri Ramanujacharya Production",
+    caption: "Invitation Card for Sri Ramanujacharya Production"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_1_k2pozo.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_1_d9lwbq.jpg",
+    alt: "Pamphlet for Sri Ramanujacharya Production",
+    caption: "Pamphlet for Sri Ramanujacharya Production"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_2_Inauguration_Melote_pdd7ww.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_2_Inauguration_Melote_giw1dx.jpg",
+    alt: "Inauguration of Sri Ramanujacharya Production",
+    caption: "Inauguration of Sri Ramanujacharya Production"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_3_Inauguraral_event_Melkote_mkjekt.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_3_Inauguraral_event_Melkote_bkdcdv.jpg",
+    alt: "Inauguration of Sri Ramanujacharya Production",
+    caption: "Inaugural event for Sri Ramanujacharya Production"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_4_LIGHTING_OF_THE_LAMP_AT_MES_COLLEGE_KALAVEDI_p0mv6a.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_4_LIGHTING_OF_THE_LAMP_AT_MES_COLLEGE_KALAVEDI_yyohsx.jpg",
+    alt: "Lighting of the Lamp",
+    caption: "Lighting of the Lamp"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180970/pic_5_RAMANUJA_STAGED_AT_MES_KALAVEDI._irvcud.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_5_RAMANUJA_STAGED_AT_MES_KALAVEDI._gxuxmm.jpg",
+    alt: "Lighting of the Lamp",
+    caption: "Lighting of the Lamp"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/ramanuja-fb_050417075213_yporpr.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221543/ramanuja-fb_050417075213_hc3x5f.jpg",
+    alt: "Sri Ramanujacharya",
+    caption: "Sri Ramanujacharya"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/1_n90ttm.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221541/1_dpgzfj.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180985/2_jzkoml.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221541/2_qkryi2.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180985/3_dmyn3k.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221541/3_dxkob2.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180985/4_ajcs4t.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221541/4_zj7mzn.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180985/5_nigbgh.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221543/5_h7fdgk.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180985/6_dwkw3z.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221543/6_wx5abf.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/7_lfdyeq.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221541/7_lmme0s.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/8_oqtsyg.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221541/8_kvku3c.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/9_qgcg4v.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221542/9_yuktzk.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/10_ngahgm.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221542/10_sgcewd.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/11_ydfdls.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221542/11_z2xbbu.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/12_s8eas6.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221542/12_yi56fp.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/13_mqeb6j.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221542/13_rlzdgm.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180986/14_tieavu.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221542/14_nu77fo.jpg",
+    alt: "Sri Ramanujacharya Production Stills",
+    caption: "Sri Ramanujacharya Production Stills"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629180987/Final_mbb36a.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631221542/Final_n6wbka.jpg",
+    alt: "Sri Ramanujacharya"
+  }
+];
 ---
 
 <PageHeroFixedLayout
@@ -66,707 +231,7 @@ import YouTube from '../components/YouTube.astro';
       <h2 class="full-width-headline center">
         Rehearsal, Inauguration, Still photos of the production
       </h2>
-      <div class="flick-carousel standard is-flkty-hidden">
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180948/1_STAGE_REHEARSAL_gbs2s2.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631219724/1_STAGE_REHEARSAL_jv1upm.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180948/1_STAGE_REHEARSAL_gbs2s2.webp"
-                alt="Rehearsal for Sri Ramanujacharya Production"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Stage Rehearsal
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180947/STUDENTS_1_lvxqxl.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631219723/STUDENTS_1_ebtr2x.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180947/STUDENTS_1_lvxqxl.webp"
-                alt="Students at Rehearsal"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Students at Rehearsal
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180948/STUDENTS_2_lty9ox.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631219723/STUDENTS_2_jnc9wb.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180948/STUDENTS_2_lty9ox.webp"
-                alt="Students at Rehearsal"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Students at Rehearsal
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180947/STUDENTS_3_xfyko1.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631219724/STUDENTS_3_w7gs6h.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180947/STUDENTS_3_xfyko1.webp"
-                alt="Students at Rehearsal"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Students at Rehearsal
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180947/STUDENTS_4_pmpn6l.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631219723/STUDENTS_4_f42tcd.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180947/STUDENTS_4_pmpn6l.webp"
-                alt="Students at Rehearsal"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Students at Rehearsal
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180969/opening_pic_on_the_scroll._iwn4ew.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221145/opening_pic_on_the_scroll._ktpecx.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180969/opening_pic_on_the_scroll._iwn4ew.webp"
-                alt="Invitation Card for Sri Ramanujacharya Production"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Invitation Card for Sri Ramanujacharya Production
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_1_k2pozo.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_1_d9lwbq.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_1_k2pozo.webp"
-                alt="Pamphlet for Sri Ramanujacharya Production"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Pamphlet for Sri Ramanujacharya Production
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_2_Inauguration_Melote_pdd7ww.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_2_Inauguration_Melote_giw1dx.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_2_Inauguration_Melote_pdd7ww.webp"
-                alt="Inauguration of Sri Ramanujacharya Production"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Inauguration of Sri Ramanujacharya Production
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_3_Inauguraral_event_Melkote_mkjekt.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_3_Inauguraral_event_Melkote_bkdcdv.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_3_Inauguraral_event_Melkote_mkjekt.webp"
-                alt="Inauguration of Sri Ramanujacharya Production"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Inaugural event for Sri Ramanujacharya Production
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_4_LIGHTING_OF_THE_LAMP_AT_MES_COLLEGE_KALAVEDI_p0mv6a.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_4_LIGHTING_OF_THE_LAMP_AT_MES_COLLEGE_KALAVEDI_yyohsx.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180969/pic_4_LIGHTING_OF_THE_LAMP_AT_MES_COLLEGE_KALAVEDI_p0mv6a.webp"
-                alt="Lighting of the Lamp"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Lighting of the Lamp
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180970/pic_5_RAMANUJA_STAGED_AT_MES_KALAVEDI._irvcud.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221145/pic_5_RAMANUJA_STAGED_AT_MES_KALAVEDI._gxuxmm.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180970/pic_5_RAMANUJA_STAGED_AT_MES_KALAVEDI._irvcud.webp"
-                alt="Lighting of the Lamp"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Lighting of the Lamp
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/ramanuja-fb_050417075213_yporpr.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221543/ramanuja-fb_050417075213_hc3x5f.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/ramanuja-fb_050417075213_yporpr.webp"
-                alt="Sri Ramanujacharya"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/1_n90ttm.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221541/1_dpgzfj.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/1_n90ttm.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180985/2_jzkoml.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221541/2_qkryi2.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180985/2_jzkoml.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180985/3_dmyn3k.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221541/3_dxkob2.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180985/3_dmyn3k.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180985/4_ajcs4t.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221541/4_zj7mzn.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180985/4_ajcs4t.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180985/5_nigbgh.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221543/5_h7fdgk.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180985/5_nigbgh.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180985/6_dwkw3z.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221543/6_wx5abf.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180985/6_dwkw3z.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/7_lfdyeq.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221541/7_lmme0s.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/7_lfdyeq.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/8_oqtsyg.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221541/8_kvku3c.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/8_oqtsyg.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/9_qgcg4v.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221542/9_yuktzk.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/9_qgcg4v.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/10_ngahgm.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221542/10_sgcewd.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/10_ngahgm.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/11_ydfdls.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221542/11_z2xbbu.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/11_ydfdls.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/12_s8eas6.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221542/12_yi56fp.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/12_s8eas6.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/13_mqeb6j.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221542/13_rlzdgm.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/13_mqeb6j.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180986/14_tieavu.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221542/14_nu77fo.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180986/14_tieavu.webp"
-                alt="Sri Ramanujacharya Production Stills"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Sri Ramanujacharya Production Stills
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629180987/Final_mbb36a.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631221542/Final_n6wbka.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629180987/Final_mbb36a.webp"
-                alt="Sri Ramanujacharya"
-                class="contain"
-              />
-            </picture>
-          </div>
-        </div>
-      </div>
+      <EmblaCarousel images={productionImages} type="standard" />
     </div>
   </div>
 </PageHeroFixedLayout>

@@ -1,5 +1,89 @@
 ---
 import PageHeroFixedLayout from '../layouts/PageHeroFixedLayout.astro';
+import EmblaCarousel from '../components/EmblaCarousel.astro';
+
+const profileImages = [
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0020_fzg0ly.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0020_yjzoia.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0069_itnlv3.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0069_vpsiaw.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0070_q1nmqi.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0070_l9fewa.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0150_jctpnz.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0150_ba6vya.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0145_cx1swx.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0145_donlaz.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0146_y5q9ul.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0146_bubcsm.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0073_eegnrn.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0073_axjp3a.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0155_f20sa1.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0155_osgdko.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0159_kcnu8d.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0159_xnft4m.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0161_jy5owv.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0161_mjqbyy.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135447/IMG_0179_mglfg8.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223891/IMG_0179_vwawi5.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135447/IMG_0178_r3iyvm.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223891/IMG_0178_bnuzkd.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0162_ysk84v.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0162_v9xugz.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0158_uz1gz9.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0158_q0yrv0.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0144_l79w7q.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0144_z8dpwi.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0021_abdydf.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0021_s0xcyo.jpg",
+    alt: "Seshadri Iyengar in a seated dance pose"
+  }
+];
 
 const frontmatter = {
   title: "Profile | Seshadri Iyengar",
@@ -131,312 +215,7 @@ const frontmatter = {
       </p>
     </div>
     <div class="multi-row-section container-flkty pad-top">
-      <div class="flick-carousel standard no-caption is-flkty-hidden">
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0020_fzg0ly.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0020_yjzoia.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0020_fzg0ly.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0069_itnlv3.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0069_vpsiaw.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0069_itnlv3.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0070_q1nmqi.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0070_l9fewa.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0070_q1nmqi.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0150_jctpnz.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0150_ba6vya.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0150_jctpnz.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0145_cx1swx.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0145_donlaz.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0145_cx1swx.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0146_y5q9ul.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0146_bubcsm.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0146_y5q9ul.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0073_eegnrn.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0073_axjp3a.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0073_eegnrn.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0155_f20sa1.webp
-                "
-                type="image/webp"
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0155_osgdko.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0155_f20sa1.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0159_kcnu8d.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0159_xnft4m.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0159_kcnu8d.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0161_jy5owv.webp
-                "
-                type="image/webp"
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0161_mjqbyy.jpg
-                "
-                type="image/jpeg"
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0161_jy5owv.webp"
-                alt="Seshadri Iyengar in a seated dance pose"
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135447/IMG_0179_mglfg8.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223891/IMG_0179_vwawi5.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135447/IMG_0179_mglfg8.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135447/IMG_0178_r3iyvm.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223891/IMG_0178_bnuzkd.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135447/IMG_0178_r3iyvm.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0162_ysk84v.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0162_v9xugz.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0162_ysk84v.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0158_uz1gz9.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223890/IMG_0158_q0yrv0.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135446/IMG_0158_uz1gz9.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0144_l79w7q.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0144_z8dpwi.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0144_l79w7q.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0021_abdydf.webp
-                "
-                type="image/webp"/>
-              <source
-                srcset="
-                https://res.cloudinary.com/driyengar/image/upload/v1631223889/IMG_0021_s0xcyo.jpg
-                "
-                type="image/jpeg"/>
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629135445/IMG_0021_abdydf.webp"
-                alt="Seshadri Iyengar in a seated dance pose"/>
-            </picture>
-          </div>
-        </div>
-      </div>
+      <EmblaCarousel images={profileImages} type="standard" />
     </div>
   </div>
 </PageHeroFixedLayout>

@@ -1,5 +1,29 @@
 ---
 import PageHeroFixedLayout from '../layouts/PageHeroFixedLayout.astro';
+import EmblaCarousel from '../components/EmblaCarousel.astro';
+
+const icfaStudentsImages = [
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_31_krncdq.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631222798/ICFA_STUDENTS_31_ws04bc.jpg",
+    alt: "ICFA Students"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_2_uy5u5g.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631222798/ICFA_STUDENTS_2_duhgt4.jpg",
+    alt: "ICFA Students"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_4_dx0pkf.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631222798/STUDENTS_4_qewxbg.jpg",
+    alt: "ICFA Students"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_2_kbu9at.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631222799/STUDENTS_2_uygq5v.jpg",
+    alt: "ICFA Students"
+  }
+];
 
 const frontmatter = {
   title: "Training | Seshadri Iyengar",
@@ -73,100 +97,7 @@ const frontmatter = {
         <h2 class="full-width-headline center">
           ICFA Students
         </h2>
-        <div class="flick-carousel standard no-caption is-flkty-hidden">
-          <div class="carousel-cell">
-            <div class="slide-img">
-              <picture>
-                <source
-                  srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_31_krncdq.webp
-                  "
-                  type="image/webp"
-                />
-                <source
-                  srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631222798/ICFA_STUDENTS_31_ws04bc.jpg
-                  "
-                  type="image/jpeg"
-                />
-                <img
-                  src="https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_31_krncdq.webp"
-                  alt="ICFA Students"
-                  class="contain"
-                />
-              </picture>
-            </div>
-          </div>
-          <div class="carousel-cell">
-            <div class="slide-img">
-              <picture>
-                <source
-                  srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_2_uy5u5g.webp
-                  "
-                  type="image/webp"
-                />
-                <source
-                  srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631222798/ICFA_STUDENTS_2_duhgt4.jpg
-                  "
-                  type="image/jpeg"
-                />
-                <img
-                  src="https://res.cloudinary.com/driyengar/image/upload/v1630465085/ICFA_STUDENTS_2_uy5u5g.webp"
-                  alt="ICFA Students"
-                  class="contain"
-                />
-              </picture>
-            </div>
-          </div>
-          <div class="carousel-cell">
-            <div class="slide-img">
-              <picture>
-                <source
-                  srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_4_dx0pkf.webp
-                  "
-                  type="image/webp"
-                />
-                <source
-                  srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631222798/STUDENTS_4_qewxbg.jpg
-                  "
-                  type="image/jpeg"
-                />
-                <img
-                  src="https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_4_dx0pkf.webp"
-                  alt="ICFA Students"
-                  class="contain"
-                />
-              </picture>
-            </div>
-          </div>
-          <div class="carousel-cell">
-            <div class="slide-img">
-              <picture>
-                <source
-                  srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_2_kbu9at.webp
-                  "
-                  type="image/webp"
-                />
-                <source
-                  srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631222799/STUDENTS_2_uygq5v.jpg
-                  "
-                  type="image/jpeg"
-                />
-                <img
-                  src="https://res.cloudinary.com/driyengar/image/upload/v1630465085/STUDENTS_2_kbu9at.webp"
-                  alt="ICFA Students"
-                  class="contain"
-                />
-              </picture>
-            </div>
-          </div>
-        </div>
+        <EmblaCarousel images={icfaStudentsImages} type="standard" />
       </div>
     </div>
 </PageHeroFixedLayout>
