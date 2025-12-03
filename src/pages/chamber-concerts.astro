@@ -1,11 +1,96 @@
 ---
 import PageNoHeroLayout from '../layouts/PageNoHeroLayout.astro';
+import EmblaCarousel from '../components/EmblaCarousel.astro';
 
 const frontmatter = {
   title: "Chamber Concerts | Seshadri Iyengar",
   carousels: true,
   modals: false
 };
+
+const padminiRaviImages = [
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629788830/padmini_ravi_and_lakshmi_flier_lxllxi.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631207848/padmini_ravi_and_lakshmi_flier_x2nisv.jpg",
+    alt: "Chamber Concerts, 12th May 2019: Guru Smt. Padmini Ravi and Smt Lakshmi Ramesh Flyer",
+    caption: "Chamber Concerts, 12th May 2019: Guru Smt. Padmini Ravi and Smt Lakshmi Ramesh"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629788830/PADMINI_RAVI_1_lrbv0s.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208269/PADMINI_RAVI_1_p0qtfs.jpg",
+    alt: "Guru Smt. Padmini Ravi",
+    caption: "Guru Smt. Padmini Ravi"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629788830/DSC01511_e5egd4.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208267/DSC01511_qupmqn.jpg",
+    alt: "Smt Lakshmi Ramesh",
+    caption: "Smt Lakshmi Ramesh"
+  }
+];
+
+const ushaDatarImages = [
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629789209/WORKSHOP_USHA_DATAR_2_okiaco.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208537/WORKSHOP_USHA_DATAR_2_ngekuu.jpg",
+    alt: "Chamber Concerts, 28th June 2020: Guru Smt. Usha Datar Flyer",
+    caption: "Chamber Concerts, 28th June 2020: Guru Smt. Usha Datar"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629789209/DSC01828_bxuwyp.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208536/DSC01828_xajclg.jpg",
+    alt: "Guru Smt. Usha Datar",
+    caption: "Guru Smt. Usha Datar"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629789209/thumbnail_ok24tr.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208536/thumbnail_yl0qxa.jpg",
+    alt: "Group Photo with Guru Smt. Usha Datar",
+    caption: "Group Photo with Guru Smt. Usha Datar"
+  }
+];
+
+const anithaSanthanamImages = [
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629789491/ANITA_SANTANAM_FLIER_nukxwz.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208744/ANITA_SANTANAM_FLIER_bclxdi.jpg",
+    alt: "Chamber Concerts, 28th June 2019: Smt. Anitha Santhanam",
+    caption: "Chamber Concerts, 5th October 2019: Smt. Anitha Santhanam"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629789491/ANITA_SANTANAM_2_dtqnjv.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208744/ANITA_SANTANAM_2_o1dcu4.jpg",
+    alt: "Smt. Anitha Santhanam",
+    caption: "Smt. Anitha Santhanam"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629789491/ANITA_SANTANAM_1_jmsk0i.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208744/ANITA_SANTANAM_1_qqvo5w.jpg",
+    alt: "Audience at the performance by Smt. Anitha Santhanam",
+    caption: "Audience at the performance by Smt. Anitha Santhanam"
+  }
+];
+
+const preethiBharadwajImages = [
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629789910/YAMUNA_12TH_JAN_2020_mgc5pt.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208958/YAMUNA_12TH_JAN_2020_qxnkfb.jpg",
+    alt: "Chamber Concerts, 12th January 2020: Smt. Preethi Bharadwaj",
+    caption: "Chamber Concerts, 12th January 2020: Smt. Preethi Bharadwaj"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629789910/YAMUNA_2_rnf8sm.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208958/YAMUNA_2_af6m8c.jpg",
+    alt: "Smt. Preethi Bharadwaj",
+    caption: "Smt. Preethi Bharadwaj"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629789910/YAMINA_1_ymdkbv.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631208958/YAMINA_1_j4dunv.jpg",
+    alt: "Audience at the performance by Smt. Preethi Bharadwaj",
+    caption: "Audience at the performance by Smt. Preethi Bharadwaj"
+  }
+];
 ---
 
 <PageNoHeroLayout title={frontmatter.title} carousels={frontmatter.carousels} modals={frontmatter.modals}>
@@ -167,258 +252,25 @@ const frontmatter = {
       <h2 class="full-width-headline center">
         Guru Smt. Padmini Ravi and Smt Lakshmi Ramesh - 12th May 2019
       </h2>
-      <div class="flick-carousel standard is-flkty-hidden">
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629788830/padmini_ravi_and_lakshmi_flier_lxllxi.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631207848/padmini_ravi_and_lakshmi_flier_x2nisv.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629788830/padmini_ravi_and_lakshmi_flier_lxllxi.webp"
-                   alt="Chamber Concerts, 12th May 2019: Guru Smt. Padmini Ravi and Smt Lakshmi Ramesh Flyer"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Chamber Concerts, 12th May 2019: Guru Smt. Padmini Ravi and Smt
-            Lakshmi Ramesh
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629788830/PADMINI_RAVI_1_lrbv0s.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208269/PADMINI_RAVI_1_p0qtfs.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629788830/PADMINI_RAVI_1_lrbv0s.webp"
-                   alt="Guru Smt. Padmini Ravi"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">Guru Smt. Padmini Ravi</div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629788830/DSC01511_e5egd4.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208267/DSC01511_qupmqn.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629788830/DSC01511_e5egd4.webp"
-                   alt="Smt Lakshmi Ramesh"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">Smt Lakshmi Ramesh</div>
-        </div>
-      </div>
+      <EmblaCarousel images={padminiRaviImages} type="standard" />
     </div>
     <div class="multi-row-section container-flkty pad-top">
       <h2 class="full-width-headline center">
         Guru Smt. Usha Datar - 28th June 2019
       </h2>
-      <div class="flick-carousel standard is-flkty-hidden">
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629789209/WORKSHOP_USHA_DATAR_2_okiaco.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208537/WORKSHOP_USHA_DATAR_2_ngekuu.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629789209/WORKSHOP_USHA_DATAR_2_okiaco.webp"
-                   alt="Chamber Concerts, 28th June 2020: Guru Smt. Usha Datar Flyer"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Chamber Concerts, 28th June 2020: Guru Smt. Usha Datar
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629789209/DSC01828_bxuwyp.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208536/DSC01828_xajclg.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629789209/DSC01828_bxuwyp.webp"
-                   alt="Guru Smt. Usha Datar"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">Guru Smt. Usha Datar</div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629789209/thumbnail_ok24tr.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208536/thumbnail_yl0qxa.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629789209/thumbnail_ok24tr.webp"
-                   alt="Group Photo with Guru Smt. Usha Datar"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">Group Photo with Guru Smt. Usha Datar</div>
-        </div>
-      </div>
+      <EmblaCarousel images={ushaDatarImages} type="standard" />
     </div>
     <div class="multi-row-section container-flkty pad-top">
       <h2 class="full-width-headline center">
         Smt. Anitha Santhanam - 5th October 2019
       </h2>
-      <div class="flick-carousel standard is-flkty-hidden">
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629789491/ANITA_SANTANAM_FLIER_nukxwz.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208744/ANITA_SANTANAM_FLIER_bclxdi.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629789491/ANITA_SANTANAM_FLIER_nukxwz.webp"
-                   alt="Chamber Concerts, 28th June 2019: Smt. Anitha Santhanam"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Chamber Concerts, 5th October 2019: Smt. Anitha Santhanam
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629789491/ANITA_SANTANAM_2_dtqnjv.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208744/ANITA_SANTANAM_2_o1dcu4.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629789491/ANITA_SANTANAM_2_dtqnjv.webp"
-                   alt="Smt. Anitha Santhanam"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">Smt. Anitha Santhanam</div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629789491/ANITA_SANTANAM_1_jmsk0i.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208744/ANITA_SANTANAM_1_qqvo5w.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629789491/ANITA_SANTANAM_1_jmsk0i.webp"
-                   alt="Audience at the performance by Smt. Anitha Santhanam"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Audience at the performance by Smt. Anitha Santhanam
-          </div>
-        </div>
-      </div>
+      <EmblaCarousel images={anithaSanthanamImages} type="standard" />
     </div>
     <div class="multi-row-section container-flkty pad-top">
       <h2 class="full-width-headline center">
         Smt. Preethi Bharadwaj - 12th January 2020
       </h2>
-      <div class="flick-carousel standard is-flkty-hidden">
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629789910/YAMUNA_12TH_JAN_2020_mgc5pt.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208958/YAMUNA_12TH_JAN_2020_qxnkfb.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629789910/YAMUNA_12TH_JAN_2020_mgc5pt.webp"
-                   alt="Chamber Concerts, 12th January 2020: Smt. Preethi Bharadwaj"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Chamber Concerts, 12th January 2020: Smt. Preethi Bharadwaj
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629789910/YAMUNA_2_rnf8sm.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208958/YAMUNA_2_af6m8c.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629789910/YAMUNA_2_rnf8sm.webp"
-                   alt="Smt. Preethi Bharadwaj"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">Smt. Preethi Bharadwaj</div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629789910/YAMINA_1_ymdkbv.webp
-                "
-                      type="image/webp" />
-              <source srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631208958/YAMINA_1_j4dunv.jpg
-                "
-                      type="image/jpeg" />
-              <img src="https://res.cloudinary.com/driyengar/image/upload/v1629789910/YAMINA_1_ymdkbv.webp"
-                   alt="Audience at the performance by Smt. Preethi Bharadwaj"
-                   class="contain" />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            Audience at the performance by Smt. Preethi Bharadwaj
-          </div>
-        </div>
-      </div>
+      <EmblaCarousel images={preethiBharadwajImages} type="standard" />
     </div>
     <div class="container multi-row-section space-above">
       <p class="full-width">

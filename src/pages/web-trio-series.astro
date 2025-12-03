@@ -1,12 +1,219 @@
 ---
 import PageNoHeroLayout from '../layouts/PageNoHeroLayout.astro';
 import YouTube from '../components/YouTube.astro';
+import EmblaCarousel from '../components/EmblaCarousel.astro';
 
 const frontmatter = {
   title: "Web Trio Series | Seshadri Iyengar",
   carousels: true,
   modals: false
 };
+
+const webTrioImages = [
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607895/web_trio_series_luqlsm.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251866/web_trio_series_pvy2k5.jpg",
+    alt: "Web Trio Series Intro Flyer"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/13th_MAY_l4s8ri.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251866/13th_MAY_rk80hd.png",
+    alt: "Web Trio Series, 13th May 2020 - Demystifying Suladi",
+    caption: "Web Trio Series, 13th May 2020 - Demystifying Suladi"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/MALE_20TH_MAY_jzobqg.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251869/MALE_20TH_MAY_e5i6lc.png",
+    alt: "Web Trio Series, 20th May 2020 - Reflections of a Male Dancer",
+    caption: "Web Trio Series, 20th May 2020 - Reflections of a Male Dancer"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/27_MAY_n1pyg4.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251866/27_MAY_qb5tdu.png",
+    alt: "Web Trio Series, 27th May 2020 - From the side podium to center stage, expressing thoughts on Music for Abhinaya & Abhinaya in Music",
+    caption: "Web Trio Series, 27th May 2020 - From the side podium to center stage, expressing thoughts on Music for Abhinaya & Abhinaya in Music"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_3RD_vnq2rg.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251869/JUNE_3RD_vz35rh.png",
+    alt: "Web Trio Series, 3rd June 2020 - Darpana - A Reflection, Deshi/Dasa Pantha - Regional and Dasa literature, Duti - Dutikarmaprakasha",
+    caption: "Web Trio Series, 3rd June 2020 - Darpana - A Reflection, Deshi/Dasa Pantha - Regional and Dasa literature, Duti - Dutikarmaprakasha"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_10TH_alqy31.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251869/JUNE_10TH_txpfze.png",
+    alt: "Web Trio Series, 10th June 2020 - Bharata Nrityam - Tracing its path from the delta to its source",
+    caption: "Web Trio Series, 10th June 2020 - Bharata Nrityam - Tracing its path from the delta to its source"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_17TH_BANI_GHARANA_FINAL_g1lfg7.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251870/JUNE_17TH_BANI_GHARANA_FINAL_uwwqqi.png",
+    alt: "Web Trio Series, 17th June 2020 - Bani/Gharana Concepts & Interpretations or Cloning & Geometry",
+    caption: "Web Trio Series, 17th June 2020 - Bani/Gharana Concepts & Interpretations or Cloning & Geometry"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_24_cjii6q.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251869/JUNE_24_qife1o.png",
+    alt: "Web Trio Series, 24th June 2020 - Shades in Abhinaya",
+    caption: "Web Trio Series, 24th June 2020 - Shades in Abhinaya"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607893/JULY_1_sck2am.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251868/JULY_1_anpkab.png",
+    alt: "Web Trio Series, 1st July 2020 - Aalaya Nartaki - Temple Dancer",
+    caption: "Web Trio Series, 1st July 2020 - Aalaya Nartaki - Temple Dancer"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607893/JULY_8TH_jfty6d.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251869/JULY_8TH_vh40um.png",
+    alt: "Web Trio Series, 8th July 2020 - Romance - Tradition - Cool Factor",
+    caption: "Web Trio Series, 8th July 2020 - Romance - Tradition - Cool Factor"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607893/JULY_15TH_gitzrp.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251868/JULY_15TH_wuw3zs.png",
+    alt: "Web Trio Series, 15th July 2020 - Inspiring Youngsters speak about Tradition and Transformation",
+    caption: "Web Trio Series, 15th July 2020 - Inspiring Youngsters speak about Tradition and Transformation"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/22ND_JULY_xwexjs.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251870/22ND_JULY_ewco4p.png",
+    alt: "Web Trio Series, 22nd July 2020 - Perspectives from the other side of the camera - Relationship between a moving body and the lens",
+    caption: "Web Trio Series, 22nd July 2020 - Perspectives from the other side of the camera - Relationship between a moving body and the lens"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607893/AUGUST_5TH_t5unz3.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251870/AUGUST_5TH_gikgx9.png",
+    alt: "Web Trio Series, 5th August 2020 - The Love Triangle ... My 2 Artforms and Me",
+    caption: "Web Trio Series, 5th August 2020 - The Love Triangle ... My 2 Artforms and Me"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607893/AUGUST_12TH_hibsbm.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251868/AUGUST_12TH_mr4beq.png",
+    alt: "Web Trio Series, 12th August 2020 - play .. pause .. play The Masks the non-dancer - the performer - the teacher",
+    caption: "Web Trio Series, 12th August 2020 - play .. pause .. play The Masks the non-dancer - the performer - the teacher"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/19TH_AUGUST_y6iewh.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251868/19TH_AUGUST_bawvv6.png",
+    alt: "Web Trio Series, 19th August 2020 - The artist, the art & the thematic",
+    caption: "Web Trio Series, 19th August 2020 - The artist, the art & the thematic"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607893/AUGUST_26TH_j1k8rn.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251870/AUGUST_26TH_qbnosy.png",
+    alt: "Web Trio Series, 26th August 2020 - Cross Training: Reflections on the mind, body and personality",
+    caption: "Web Trio Series, 26th August 2020 - Cross Training: Reflections on the mind, body and personality"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/SEPT_2ND_eqtmj6.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251870/SEPT_2ND_mufasw.png",
+    alt: "Web Trio Series, 2nd September 2020 - Remembering KJ Sarasa Teacher",
+    caption: "Web Trio Series, 2nd September 2020 - Remembering KJ Sarasa Teacher"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607895/SEPT_9TH_v8gfnr.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251871/SEPT_9TH_ykcarp.png",
+    alt: "Web Trio Series, 9th September 2020 - Prof Bharat Gupt: Vedic Origin of Murthy Worship Through Pindi Bandhas. Evidence from Natyashastra",
+    caption: "Web Trio Series, 9th September 2020 - Prof Bharat Gupt: Vedic Origin of Murthy Worship Through Pindi Bandhas. Evidence from Natyashastra."
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/SEPT_16TH_rncb8j.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251870/SEPT_16TH_zyj6lg.png",
+    alt: "Web Trio Series, 16th September 2020 - Musical Journey of a DJ",
+    caption: "Web Trio Series, 16th September 2020 - Musical Journey of a DJ"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/23RD_SEPT_fwaa57.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251866/23RD_SEPT_cjw1yk.png",
+    alt: "Web Trio Series, 23rd September 2020 - Dr MA Alwar - Upanayanam: Vedic Perspective; Significance in our lives; Meaning of the Gayathri Mantra",
+    caption: "Web Trio Series, 23rd September 2020 - Dr MA Alwar - Upanayanam: Vedic Perspective; Significance in our lives; Meaning of the Gayathri Mantra"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/30_SEPT_yds4pc.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251868/30_SEPT_puv1r9.png",
+    alt: "Web Trio Series, 30th September 2020 - Padma Shree Smt. Kanaka Srinivasan: Sri Vazhuvoor Ramaiah Pillai - The Vazhuvoor Bani - The Lineage",
+    caption: "Web Trio Series, 30th September 2020 - Padma Shree Smt. Kanaka Srinivasan: Sri Vazhuvoor Ramaiah Pillai - The Vazhuvoor Bani - The Lineage"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/OCT_7TH_zdmpti.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251869/OCT_7TH_q1hlbr.png",
+    alt: "Web Trio Series, 7th October 2020 - Sri Ubhaya Vedantacharya Ayee Narasimhan Swami Melkote - Hinduism: History, Philosophy, Culture",
+    caption: "Web Trio Series, 7th October 2020 - Sri Ubhaya Vedantacharya Ayee Narasimhan Swami Melkote - Hinduism: History, Philosophy, Culture"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/OCT_14TH_ko1cag.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251871/OCT_14TH_dy37g5.png",
+    alt: "Web Trio Series, 14th October 2020 - Story of two Cultures: Sharon Lowen, Monica Cooley, Barbara Framm",
+    caption: "Web Trio Series, 14th October 2020 - Story of two Cultures: Sharon Lowen, Monica Cooley, Barbara Framm"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/OCT_21_kpv0ov.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251869/OCT_21_o3pyli.png",
+    alt: "Web Trio Series, 21st October 2020 - Navrathri: Stories, Philosophy, Aesthetics - Arjun Bharadwaj, Contributing Editor, Prekshaa Pratishtana, Bangalore",
+    caption: "Web Trio Series, 21st October 2020 - Navrathri: Stories, Philosophy, Aesthetics - Arjun Bharadwaj, Contributing Editor, Prekshaa Pratishtana, Bangalore"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/28_OCT_fyw644.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251867/28_OCT_otl1gj.png",
+    alt: "Web Trio Series, 28th October 2020 - Poetry, Interpretation and Mysticism through the Tevaram of Tirugnyanasambandar: S Jayachandran, IIIT Hyderabad",
+    caption: "Web Trio Series, 28th October 2020 - Poetry, Interpretation and Mysticism through the Tevaram of Tirugnyanasambandar: S Jayachandran, IIIT Hyderabad"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607894/NOV_4TH_rr1tt8.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251867/NOV_4TH_qi5ipw.png",
+    alt: "Web Trio Series, 4th November 2020 - Bhagavath Geeta for the Modern Youth: Swami Chidananda",
+    caption: "Web Trio Series, 4th November 2020 - Bhagavath Geeta for the Modern Youth: Swami Chidananda"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607891/11TH_NOV_k5j7ya.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251866/11TH_NOV_u5faev.png",
+    alt: "Web Trio Series, 11th November 2020 - Dr Suma Sudhindra, Uday Shankar, Vishnu R",
+    caption: "Web Trio Series, 11th November 2020 - Dr Suma Sudhindra, Uday Shankar, Vishnu R"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/18TH_NOV_qfpvau.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251866/18TH_NOV_ankvo9.png",
+    alt: "Web Trio Series, 18th November 2020 - Menstruation and Hinduism: Vedic Perspective, Hindu Practices, Ayurveda - Nithin Sridhar",
+    caption: "Web Trio Series, 18th November 2020 - Menstruation and Hinduism: Vedic Perspective, Hindu Practices, Ayurveda - Nithin Sridhar"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/25TH_NOV_yviitl.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251867/25TH_NOV_umhmeq.png",
+    alt: "Web Trio Series, 25th November 2020 - Holistic Wellbeing: Pranayama, Nadi Pariksha, Holistic Cooking",
+    caption: "Web Trio Series, 25th November 2020 - Holistic Wellbeing: Pranayama, Nadi Pariksha, Holistic Cooking"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607893/DEC_2ND_hfzkqp.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251867/DEC_2ND_qxntq9.png",
+    alt: "Web Trio Series, 2nd December 2020 - Three Vazhuvoor Artists - Smt Jayanthi Ramachandra, Chandrika Chandran, Sunitha Raj",
+    caption: "Web Trio Series, 2nd December 2020 - Three Vazhuvoor Artists - Smt Jayanthi Ramachandra, Chandrika Chandran, Sunitha Raj"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1630386237/dec-9th-2020_pejzvo.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251868/dec-9th-2020_ogbl9c.png",
+    alt: "Web Trio Series, 9th December 2020 - Versatility in Musicians",
+    caption: "Web Trio Series, 9th December 2020 - Versatility in Musicians"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607893/DEC_16_kp8uc2.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251867/DEC_16_dvwoud.png",
+    alt: "Web Trio Series, 16th December 2020 - Andal Avataram and Marghazhi month, Andal Hymns & Essence, Bondage of Jeevatman and Paramatman: Smt Prabhamani Srivathsan",
+    caption: "Web Trio Series, 16th December 2020 - Andal Avataram and Marghazhi month, Andal Hymns & Essence, Bondage of Jeevatman and Paramatman: Smt Prabhamani Srivathsan"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607892/23RD_DEC_kntiyw.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251867/23RD_DEC_puixyv.png",
+    alt: "Web Trio Series, 23rd December 2020 - Christmas - Origin, Tradition, Practice, Scriptural, Christmas Tree & Santa Claus: Raju Alex, Parish Priest, Begumpet, Hyderabad",
+    caption: "Web Trio Series, 23rd December 2020 - Christmas - Origin, Tradition, Practice, Scriptural, Christmas Tree & Santa Claus: Raju Alex, Parish Priest, Begumpet, Hyderabad"
+  },
+  {
+    webp: "https://res.cloudinary.com/driyengar/image/upload/v1629607893/DEC_3OTH_ivu2ha.webp",
+    fallback: "https://res.cloudinary.com/driyengar/image/upload/v1631251870/DEC_3OTH_ll8wjk.png",
+    alt: "Web Trio Series, 30th December 2020 - Rhythm: Grammar of Rhythm, Rhythm in Carnatic Music, Rhythm in Classical Dance - Anoor R. Anantha Krishna Sharma",
+    caption: "Web Trio Series, 30th December 2020 - Rhythm: Grammar of Rhythm, Rhythm in Carnatic Music, Rhythm in Classical Dance - Anoor R. Anantha Krishna Sharma"
+  }
+];
 ---
 
 <PageNoHeroLayout title={frontmatter.title} carousels={frontmatter.carousels} modals={frontmatter.modals}>
@@ -44,1284 +251,7 @@ const frontmatter = {
       <div class="video-wrapper"><YouTube id="Gni2oJO-dHo" /></div>
     </div>
     <div class="multi-row-section container-flkty space-above">
-      <div class="flick-carousel standard caption-w-link is-flkty-hidden">
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607895/web_trio_series_luqlsm.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251866/web_trio_series_pvy2k5.jpg
-                "
-                type="image/jpeg"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607895/web_trio_series_luqlsm.webp"
-                alt="Web Trio Series Intro Flyer"
-                class="contain"
-              />
-            </picture>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/13th_MAY_l4s8ri.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251866/13th_MAY_rk80hd.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/13th_MAY_l4s8ri.webp"
-                alt="Web Trio Series, 13th May 2020 - Demystifying Suladi"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 13th May 2020 - Demystifying Suladi
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/MALE_20TH_MAY_jzobqg.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251869/MALE_20TH_MAY_e5i6lc.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/MALE_20TH_MAY_jzobqg.webp"
-                alt="Web Trio Series, 20th May 2020 - Reflections of a Male Dancer"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 20th May 2020 - Reflections of a Male Dancer
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/27_MAY_n1pyg4.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251866/27_MAY_qb5tdu.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/27_MAY_n1pyg4.webp"
-                alt="Web Trio Series, 27th May 2020 - From the side podium to center stage, expressing thoughts on Music for Abhinaya & Abhinaya in Music"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 27th May 2020 - From the side podium to center
-              stage, expressing thoughts on Music for Abhinaya & Abhinaya in Music
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_3RD_vnq2rg.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251869/JUNE_3RD_vz35rh.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_3RD_vnq2rg.webp"
-                alt="Web Trio Series, 3rd June 2020 - Darpana - A Reflection, Deshi/Dasa Pantha - Regional and Dasa literature, Duti - Dutikarmaprakasha"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 3rd June 2020 - Darpana - A Reflection, Deshi/Dasa
-              Pantha - Regional and Dasa literature, Duti - Dutikarmaprakasha
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_10TH_alqy31.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251869/JUNE_10TH_txpfze.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_10TH_alqy31.webp"
-                alt="Web Trio Series, 10th June 2020 - Bharata Nrityam - Tracing its path from the delta to its source"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 10th June 2020 - Bharata Nrityam - Tracing its path
-              from the delta to its source
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_17TH_BANI_GHARANA_FINAL_g1lfg7.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251870/JUNE_17TH_BANI_GHARANA_FINAL_uwwqqi.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_17TH_BANI_GHARANA_FINAL_g1lfg7.webp"
-                alt="Web Trio Series, 17th June 2020 - Bani/Gharana Concepts & Interpretations or Cloning & Geometry"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 17th June 2020 - Bani/Gharana Concepts &
-              Interpretations or Cloning & Geometry
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_24_cjii6q.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251869/JUNE_24_qife1o.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/JUNE_24_cjii6q.webp"
-                alt="Web Trio Series, 24th June 2020 - Shades in Abhinaya"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 24th June 2020 - Shades in Abhinaya
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607893/JULY_1_sck2am.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251868/JULY_1_anpkab.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607893/JULY_1_sck2am.webp"
-                alt="Web Trio Series, 1st July 2020 - Aalaya Nartaki - Temple Dancer"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 1st July 2020 - Aalaya Nartaki - Temple Dancer
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607893/JULY_8TH_jfty6d.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251869/JULY_8TH_vh40um.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607893/JULY_8TH_jfty6d.webp"
-                alt="Web Trio Series, 8th July 2020 - Romance - Tradition - Cool Factor"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 8th July 2020 - Romance - Tradition - Cool Factor
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607893/JULY_15TH_gitzrp.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251868/JULY_15TH_wuw3zs.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607893/JULY_15TH_gitzrp.webp"
-                alt="Web Trio Series, 15th July 2020 - Inspiring Youngsters speak about Tradition and Transformation"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 15th July 2020 - Inspiring Youngsters speak about
-              Tradition and Transformation
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/22ND_JULY_xwexjs.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251870/22ND_JULY_ewco4p.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/22ND_JULY_xwexjs.webp"
-                alt="Web Trio Series, 22nd July 2020 - Perspectives from the other side of the camera - Relationship between a moving body and the lens"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 22nd July 2020 - Perspectives from the other side
-              of the camera - Relationship between a moving body and the lens
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607893/AUGUST_5TH_t5unz3.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251870/AUGUST_5TH_gikgx9.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607893/AUGUST_5TH_t5unz3.webp"
-                alt="Web Trio Series, 5th August 2020 - The Love Triangle ... My 2 Artforms and Me"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 5th August 2020 - The Love Triangle ... My 2
-              Artforms and Me
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607893/AUGUST_12TH_hibsbm.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251868/AUGUST_12TH_mr4beq.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607893/AUGUST_12TH_hibsbm.webp"
-                alt="Web Trio Series, 12th August 2020 - play .. pause .. play The Masks the non-dancer - the performer - the teacher"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 12th August 2020 - play .. pause .. play The Masks
-              the non-dancer - the performer - the teacher
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/19TH_AUGUST_y6iewh.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251868/19TH_AUGUST_bawvv6.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/19TH_AUGUST_y6iewh.webp"
-                alt="Web Trio Series, 19th August 2020 - The artist, the art & the thematic"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 19th August 2020 - The artist, the art & the
-              thematic
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607893/AUGUST_26TH_j1k8rn.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251870/AUGUST_26TH_qbnosy.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607893/AUGUST_26TH_j1k8rn.webp"
-                alt="Web Trio Series, 26th August 2020 - Cross Training: Reflections on the mind, body and personality"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 26th August 2020 - Cross Training: Reflections on
-              the mind, body and personality
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/SEPT_2ND_eqtmj6.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251870/SEPT_2ND_mufasw.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/SEPT_2ND_eqtmj6.webp"
-                alt="Web Trio Series, 2nd September 2020 - Remembering KJ Sarasa Teacher"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 2nd September 2020 - Remembering KJ Sarasa Teacher
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607895/SEPT_9TH_v8gfnr.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251871/SEPT_9TH_ykcarp.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607895/SEPT_9TH_v8gfnr.webp"
-                alt="Web Trio Series, 9th September 2020 - Prof Bharat Gupt: Vedic Origin of Murthy Worship Through Pindi Bandhas. Evidence from Natyashastra"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 9th September 2020 - Prof Bharat Gupt: Vedic Origin
-              of Murthy Worship Through Pindi Bandhas. Evidence from Natyashastra.
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/SEPT_16TH_rncb8j.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251870/SEPT_16TH_zyj6lg.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/SEPT_16TH_rncb8j.webp"
-                alt="Web Trio Series, 16th September 2020 - Musical Journey of a DJ"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 16th September 2020 - Musical Journey of a DJ
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/23RD_SEPT_fwaa57.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251866/23RD_SEPT_cjw1yk.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/23RD_SEPT_fwaa57.webp"
-                alt="Web Trio Series, 23rd September 2020 - Dr MA Alwar - Upanayanam: Vedic Perspective; Significance in our lives; Meaning of the Gayathri Mantra"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 23rd September 2020 - Dr MA Alwar - Upanayanam:
-              Vedic Perspective; Significance in our lives; Meaning of the
-              Gayathri Mantra
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/30_SEPT_yds4pc.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251868/30_SEPT_puv1r9.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/30_SEPT_yds4pc.webp"
-                alt="Web Trio Series, 30th September 2020 - Padma Shree Smt. Kanaka Srinivasan: Sri Vazhuvoor Ramaiah Pillai - The Vazhuvoor Bani - The Lineage"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 30th September 2020 - Padma Shree Smt. Kanaka
-              Srinivasan: Sri Vazhuvoor Ramaiah Pillai - The Vazhuvoor Bani - The
-              Lineage
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/OCT_7TH_zdmpti.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251869/OCT_7TH_q1hlbr.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/OCT_7TH_zdmpti.webp"
-                alt="Web Trio Series, 7th October 2020 - Sri Ubhaya Vedantacharya Ayee Narasimhan Swami Melkote - Hinduism: History, Philosophy, Culture"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 7th October 2020 - Sri Ubhaya Vedantacharya Ayee
-              Narasimhan Swami Melkote - Hinduism: History, Philosophy, Culture
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/OCT_14TH_ko1cag.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251871/OCT_14TH_dy37g5.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/OCT_14TH_ko1cag.webp"
-                alt="Web Trio Series, 14th October 2020 - Story of two Cultures: Sharon Lowen, Monica Cooley, Barbara Framm"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 14th October 2020 - Story of two Cultures: Sharon
-              Lowen, Monica Cooley, Barbara Framm
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/OCT_21_kpv0ov.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251869/OCT_21_o3pyli.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/OCT_21_kpv0ov.webp"
-                alt="Web Trio Series, 21st October 2020 - Navrathri: Stories, Philosophy, Aesthetics - Arjun Bharadwaj, Contributing Editor, Prekshaa Pratishtana, Bangalore"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 21st October 2020 - Navrathri: Stories, Philosophy,
-              Aesthetics - Arjun Bharadwaj, Contributing Editor, Prekshaa
-              Pratishtana, Bangalore
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/28_OCT_fyw644.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251867/28_OCT_otl1gj.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/28_OCT_fyw644.webp"
-                alt="Web Trio Series, 28th October 2020 - Poetry, Interpretation and Mysticism through the Tevaram of Tirugnyanasambandar: S Jayachandran, IIIT Hyderabad"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 28th October 2020 - Poetry, Interpretation and
-              Mysticism through the Tevaram of Tirugnyanasambandar: S
-              Jayachandran, IIIT Hyderabad
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607894/NOV_4TH_rr1tt8.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251867/NOV_4TH_qi5ipw.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607894/NOV_4TH_rr1tt8.webp"
-                alt="Web Trio Series, 4th November 2020 - Bhagavath Geeta for the Modern Youth: Swami Chidananda"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 4th November 2020 - Bhagavath Geeta for the Modern
-              Youth: Swami Chidananda
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607891/11TH_NOV_k5j7ya.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251866/11TH_NOV_u5faev.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607891/11TH_NOV_k5j7ya.webp"
-                alt="Web Trio Series, 11th November 2020 - Dr Suma Sudhindra, Uday Shankar, Vishnu R"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 11th November 2020 - Dr Suma Sudhindra, Uday
-              Shankar, Vishnu R
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/18TH_NOV_qfpvau.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251866/18TH_NOV_ankvo9.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/18TH_NOV_qfpvau.webp"
-                alt="Web Trio Series, 18th November 2020 - Menstruation and Hinduism: Vedic Perspective, Hindu Practices, Ayurveda - Nithin Sridhar"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 18th November 2020 - Menstruation and Hinduism:
-              Vedic Perspective, Hindu Practices, Ayurveda - Nithin Sridhar
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/25TH_NOV_yviitl.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251867/25TH_NOV_umhmeq.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/25TH_NOV_yviitl.webp"
-                alt="Web Trio Series, 25th November 2020 - Holistic Wellbeing: Pranayama, Nadi Pariksha, Holistic Cooking"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 25th November 2020 - Holistic Wellbeing: Pranayama,
-              Nadi Pariksha, Holistic Cooking
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607893/DEC_2ND_hfzkqp.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251867/DEC_2ND_qxntq9.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607893/DEC_2ND_hfzkqp.webp"
-                alt="Web Trio Series, 2nd December 2020 - Three Vazhuvoor Artists - Smt Jayanthi Ramachandra, Chandrika Chandran, Sunitha Raj"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 2nd December 2020 - Three Vazhuvoor Artists - Smt
-              Jayanthi Ramachandra, Chandrika Chandran, Sunitha Raj
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1630386237/dec-9th-2020_pejzvo.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251868/dec-9th-2020_ogbl9c.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1630386237/dec-9th-2020_pejzvo.webp"
-                alt="Web Trio Series, 9th December 2020 - Versatility in Musicians"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 9th December 2020 - Versatility in Musicians
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607893/DEC_16_kp8uc2.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251867/DEC_16_dvwoud.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607893/DEC_16_kp8uc2.webp"
-                alt="Web Trio Series, 16th December 2020 - Andal Avataram and Marghazhi month, Andal Hymns & Essence, Bondage of Jeevatman and Paramatman: Smt Prabhamani Srivathsan"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 16th December 2020 - Andal Avataram and Marghazhi
-              month, Andal Hymns & Essence, Bondage of Jeevatman and Paramatman:
-              Smt Prabhamani Srivathsan
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607892/23RD_DEC_kntiyw.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251867/23RD_DEC_puixyv.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607892/23RD_DEC_kntiyw.webp"
-                alt="Web Trio Series, 23rd December 2020 - Christmas - Origin, Tradition, Practice, Scriptural, Christmas Tree & Santa Claus: Raju Alex, Parish Priest, Begumpet, Hyderabad"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 23rd December 2020 - Christmas - Origin, Tradition,
-              Practice, Scriptural, Christmas Tree & Santa Claus: Raju Alex,
-              Parish Priest, Begumpet, Hyderabad
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="slide-img">
-            <picture>
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1629607893/DEC_3OTH_ivu2ha.webp
-                "
-                type="image/webp"
-              />
-              <source
-                srcset="
-                  https://res.cloudinary.com/driyengar/image/upload/v1631251870/DEC_3OTH_ll8wjk.png
-                "
-                type="image/png"
-              />
-              <img
-                src="https://res.cloudinary.com/driyengar/image/upload/v1629607893/DEC_3OTH_ivu2ha.webp"
-                alt="Web Trio Series, 30th December 2020 - Rhythm: Grammar of Rhythm, Rhythm in Carnatic Music, Rhythm in Classical Dance - Anoor R. Anantha Krishna Sharma"
-                class="contain"
-              />
-            </picture>
-          </div>
-          <div class="slide-caption">
-            <div class="text">
-              Web Trio Series, 30th December 2020 - Rhythm: Grammar of Rhythm,
-              Rhythm in Carnatic Music, Rhythm in Classical Dance - Anoor R.
-              Anantha Krishna Sharma
-            </div>
-            <div class="link">
-              <a
-                href="https://www.instagram.com/icfabengaluru/"
-                target="_blank"
-                class="link --white"
-              >
-                View Here <i class="fab fa-instagram"></i> ICFA Bengaluru
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <EmblaCarousel images={webTrioImages} type="standard" />
     </div>
 
     <div class="container multi-row-section">

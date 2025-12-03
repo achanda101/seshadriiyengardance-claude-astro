@@ -165,21 +165,6 @@ const {
     <slot />
   </main>
 
-  {carousels && (
-    <>
-      <script is:inline src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-      <script is:inline>
-        var flktyElemList = document.querySelectorAll(".flick-carousel");
-        if (flktyElemList) {
-          flktyElemList.forEach((flktyElem) => {
-            var stdFlktyObj = new Flickity(flktyElem);
-            flktyElem.style.opacity = 1.0;
-          });
-        }
-      </script>
-    </>
-  )}
-
   {modals && (
     <script is:inline>
       document.querySelectorAll(".open-modal").forEach((modalLink) => {

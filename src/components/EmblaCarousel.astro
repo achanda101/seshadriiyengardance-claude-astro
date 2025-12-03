@@ -1,0 +1,97 @@
+---
+export interface Props {
+  images: Array<{
+    webp: string;
+    fallback: string;
+    alt: string;
+    caption?: string;
+  }>;
+  autoplay?: boolean;
+  type?: 'standard' | 'panorama';
+}
+
+const { images, autoplay = false, type = 'standard' } = Astro.props;
+const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
+---
+
+<div class={`embla embla--${type}`} id={carouselId}>
+  <div class="embla__viewport">
+    <div class="embla__container">
+      {images.map((image) => (
+        <div class="embla__slide">
+          <div class="slide-img">
+            <picture>
+              <source srcset={image.webp} type="image/webp" />
+              <source srcset={image.fallback} type="image/jpeg" />
+              <img src={image.webp} alt={image.alt} class="contain" loading="lazy" />
+            </picture>
+          </div>
+          {image.caption && (
+            <div class="slide-caption">{image.caption}</div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+  <button class="embla__prev" type="button" aria-label="Previous slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="embla__next" type="button" aria-label="Next slide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+  <div class="embla__dots"></div>
+</div>
+
+<script define:vars={{ carouselId, autoplay }}>
+  import EmblaCarousel from 'embla-carousel';
+  import Autoplay from 'embla-carousel-autoplay';
+
+  const emblaNode = document.getElementById(carouselId);
+  if (emblaNode) {
+    const viewport = emblaNode.querySelector('.embla__viewport');
+    const prevBtn = emblaNode.querySelector('.embla__prev');
+    const nextBtn = emblaNode.querySelector('.embla__next');
+    const dotsNode = emblaNode.querySelector('.embla__dots');
+
+    const plugins = autoplay ? [Autoplay({ delay: 4000, stopOnInteraction: false })] : [];
+
+    const embla = EmblaCarousel(viewport, {
+      loop: true,
+      align: 'start',
+      skipSnaps: false,
+    }, plugins);
+
+    // Previous/Next buttons
+    prevBtn?.addEventListener('click', () => embla.scrollPrev());
+    nextBtn?.addEventListener('click', () => embla.scrollNext());
+
+    // Create dots
+    const slides = embla.slideNodes();
+    const dots = slides.map((_, index) => {
+      const dot = document.createElement('button');
+      dot.className = 'embla__dot';
+      dot.type = 'button';
+      dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+      dot.addEventListener('click', () => embla.scrollTo(index));
+      return dot;
+    });
+
+    dots.forEach(dot => dotsNode?.appendChild(dot));
+
+    // Update dots on select
+    const updateDots = () => {
+      const selected = embla.selectedScrollSnap();
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('embla__dot--selected', index === selected);
+      });
+    };
+
+    embla.on('select', updateDots);
+    embla.on('reInit', updateDots);
+    updateDots();
+  }
+</script>
